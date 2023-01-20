@@ -4,10 +4,10 @@
     let opinion;
 </script>
 <main>
-    <div class=input>
+    
         <div id="text" class="border<">Ingrese una opinión/review de {filmName} </div>
-        <input id="opinion" class="border-primary" bind:value={opinion}  type="text" size="30" maxlength="500">
-        <button id="sendButton" class="border-primary">
+        <input  id="opinion" class="border-primary" bind:value={opinion}  type="long-text" maxlength="500">
+        <button id="sendButton" alt="enviar">
                 <svg width="18px" height="17px" viewBox="-1 0 18 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g>
                         <polygon class="arrow" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
@@ -16,29 +16,26 @@
                     </g>
                 </svg>
         </button>
-    </div>
+   
 </main>
 <style lang="scss">
-    main {
+    
+  main {
         display:flex;
+        justify-content:left;
+		align-self:center;
 		justify-content: space-between;
 		flex-wrap:wrap;
-        
         border: 1px solid brown;
         padding: 40px;
-        
         background-color: antiquewhite;
     }
 
-    .input {
-        display:flex;
-		justify-content:left;
-		align-self:center;
-    }
+   
 
     #text {
+        flex-basis: 4rem;
         border-radius:25px ;
-	    
 	    padding: 20px;
         margin: 20px;
 	    width:200px;
@@ -48,11 +45,68 @@
     }
 
     #opinion{
+        flex-basis: 10rem;
+        flex-grow: 1;
         border-radius:10px;
 	    background-color: lightblue;
 	    padding: 20px;
         margin-right: 20px;
+        width: auto;
     }
 
-  /**TODO agregar aniamcion de flecha cuando ande SASS (scss)*/
+$ease: cubic-bezier(.2,1,.3,1);  
+  
+#sendButton{
+    background-color: transparent;
+    border: none;
+
+    svg {
+      width: 100px;
+      height: auto;
+      margin: 0 2rem;
+      cursor: pointer;
+      overflow: visible;
+      polygon, path {
+        transition: all 0.5s $ease;
+      }
+      &:hover polygon, &:hover path {
+        transition: all 0,5s $ease;
+        fill: #FF4136;
+      }
+        
+      &:hover .arrow {
+        animation: arrow-anim 3s $ease infinite;
+      }
+      &:hover .arrow-fixed {
+        animation: arrow-fixed-anim 3s $ease infinite;
+      }
+    }
+  }
+  
+  @keyframes arrow-anim {
+      0% {
+          opacity: 1;
+          transform: translateX(0);
+      }
+      5% {
+          transform: translateX(-0.1rem);
+      }
+      100% {
+          transform: translateX(1rem);
+          opacity: 0;
+      }
+  }
+  
+  @keyframes arrow-fixed-anim {
+      5% {
+          opacity: 0;
+      }
+      20% {
+          opacity: 0.4;
+      }
+      100% {
+          opacity: 1;
+      }
+  }
+
 </style>
