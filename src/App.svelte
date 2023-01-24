@@ -1,13 +1,17 @@
 <script>
 	import NewReview from "./Components/NewReview.svelte";
+	import ReviewsTable from "./Components/ReviewsTable.svelte";
 	export let name;
 </script>
 
 <main>
-	<h1>Reviews {name} </h1>
+	<h1>Films Review </h1>
 	<NewReview>
 
 	</NewReview>
+
+	<ReviewsTable>
+	</ReviewsTable>
 </main>
 
 <style>
@@ -17,6 +21,7 @@
 		padding: 1em;
 		max-width: 240px;
 		margin: 0 auto;
+		
 	}
 
 	h1 {

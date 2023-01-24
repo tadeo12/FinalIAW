@@ -6,7 +6,7 @@
 <main>
     
         <div id="text" class="border<">Ingrese una opinión/review de {filmName} </div>
-        <input  id="opinion" class="border-primary" bind:value={opinion}  type="long-text" maxlength="500">
+        <textarea id="opinion" class="border-primary" maxlength="500" bind:value={opinion}/>
         <button id="sendButton" alt="enviar">
                 <svg width="18px" height="17px" viewBox="-1 0 18 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g>
@@ -70,12 +70,12 @@ $ease: cubic-bezier(.2,1,.3,1);
         transition: all 0.5s $ease;
       }
       &:hover polygon, &:hover path {
-        transition: all 0,5s $ease;
+        transition: all 0.5s $ease;
         fill: #FF4136;
       }
         
       &:hover .arrow {
-        animation: arrow-anim 3s $ease infinite;
+        animation: arrow-anim 1.5s $ease infinite;
       }
       &:hover .arrow-fixed {
         animation: arrow-fixed-anim 3s $ease infinite;
@@ -108,5 +108,4 @@ $ease: cubic-bezier(.2,1,.3,1);
           opacity: 1;
       }
   }
-
 </style>
