@@ -1,5 +1,5 @@
 <script>
-    let estrellas=3;
+    export let estrellas=3;
 </script>
 
 <main>

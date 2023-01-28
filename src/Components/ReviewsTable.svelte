@@ -1,71 +1,30 @@
 <script>
-    import CardHeader from "./CardHeader.svelte";
+    
+    import Review from "./Review.svelte";7
+
+   
+    import { data } from "../DataBaseSimulator.js";
+    
 </script>
 
 <main>
-    
-    <div class="card border-primary mb-3" style="max-width: 18rem;">
-        <div class="card-header"><CardHeader></CardHeader></div>
-        <div class="card-body text-primary">
-          <h5 class="card-title">Primary card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-      <div class="card border-secondary mb-3" style="max-width: 18rem;">
-        <div class="card-header"><CardHeader></CardHeader></div>
-        <div class="card-body text-secondary">
-          <h5 class="card-title">Secondary card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-      <div class="card border-success mb-3" style="max-width: 18rem;">
-        <div class="card-header"><CardHeader></CardHeader></div>
-        <div class="card-body text-success">
-          <h5 class="card-title">Success card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-      <div class="card border-danger mb-3" style="max-width: 18rem;">
-        <div class="card-header"><CardHeader></CardHeader></div>
-        <div class="card-body text-danger">
-          <h5 class="card-title">Danger card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-      <div class="card border-warning mb-3" style="max-width: 18rem;">
-        <div class="card-header"><CardHeader></CardHeader></div>
-        <div class="card-body">
-          <h5 class="card-title">Warning card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-      <div class="card border-info mb-3" style="max-width: 18rem;">
-        <div class="card-header"><CardHeader></CardHeader></div>
-        <div class="card-body">
-          <h5 class="card-title">Info card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-      <div class="card border-light mb-3" style="max-width: 18rem;">
-        <div class="card-header"><CardHeader></CardHeader></div>
-        <div class="card-body">
-          <h5 class="card-title">Light card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-      <div class="card border-dark mb-3" style="max-width: 18rem;">
-        <div class="card-header"><CardHeader></CardHeader></div>
-        <div class="card-body">
-          <h5 class="card-title">Dark card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
+  <Review data={data[0]}/>
+  <Review data={data[1]} style="primary"/>
+  <Review data={data[2]} style="danger"/>
+  <Review data={data[3]} style="secondary"/>
+  <Review data={data[4]} style="success"/>
+  <Review data={data[5]} style="warning"/>
+  <Review data={data[6]} style="info"/>
+  <Review data={data[7]} style="light"/>
+  <Review data={data[8]} style="dark"/>
+  <Review data={data[9]}/>
 </main>
 
 <style>
     main{
         display:flex;
         justify-content:left;
-		flex-wrap:wrap;
+		    flex-wrap:wrap;
         padding-top: 1em;
         margin: auto;
     }
@@ -73,5 +32,7 @@
     .card{
         margin: auto;
     }
+
+    
 
 </style>
