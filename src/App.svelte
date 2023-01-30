@@ -1,17 +1,14 @@
 <script>
 	import NewReview from "./Components/NewReview.svelte";
 	import ReviewsTable from "./Components/ReviewsTable.svelte";
-	export let name;
+	//export let name;
 </script>
 
 <main>
 	<h1>Films Review </h1>
-	<NewReview>
-
-	</NewReview>
-
-	<ReviewsTable>
-	</ReviewsTable>
+	
+	<NewReview/>
+	<ReviewsTable/>
 </main>
 
 <style>

@@ -14,7 +14,7 @@ export let data= [
     {
       "id": 3,
       "title": "ejemplo 3",
-      "opinion": "Some quick example text to build on the card title and make up the bulk of the card's content.",
+      "opinion": "Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.",
       "score":4
     },
     {

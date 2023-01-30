@@ -28,11 +28,4 @@
         padding-top: 1em;
         margin: auto;
     }
-
-    .card{
-        margin: auto;
-    }
-
-    
-
 </style>
