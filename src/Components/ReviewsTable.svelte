@@ -1,23 +1,17 @@
 <script>
-    
-    import Review from "./Review.svelte";7
+    import Review from "./Review.svelte";
+    import { data } from "../DataBaseSimulator";
 
-   
-    import { data } from "../DataBaseSimulator.js";
-    
+    let reviews;
+    data.subscribe(val => reviews= val)
 </script>
 
 <main>
-  <Review data={data[0]}/>
-  <Review data={data[1]} style="primary"/>
-  <Review data={data[2]} style="danger"/>
-  <Review data={data[3]} style="secondary"/>
-  <Review data={data[4]} style="success"/>
-  <Review data={data[5]} style="warning"/>
-  <Review data={data[6]} style="info"/>
-  <Review data={data[7]} style="light"/>
-  <Review data={data[8]} style="dark"/>
-  <Review data={data[9]}/>
+
+    {#each reviews as review}
+        <Review data={review} style="primary"></Review>
+    {/each}
+
 </main>
 
 <style>

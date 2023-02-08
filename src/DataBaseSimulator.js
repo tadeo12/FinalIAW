@@ -1,4 +1,9 @@
-export let data= [
+//TODO usar stores para que los distintos componentes tengan esta data
+
+import { writable} from "svelte/store";
+
+
+export const data= writable([
     {
       "id": 1,
       "title": "ejemplo 1",
@@ -59,4 +64,4 @@ export let data= [
       "opinion": "Some quick example text to build on the card title and make up the bulk of the card's content.",
       "score":5
     }
-  ];
+  ]);

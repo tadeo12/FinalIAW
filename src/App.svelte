@@ -1,14 +1,14 @@
 <script>
 	import NewReview from "./Components/NewReview.svelte";
 	import ReviewsTable from "./Components/ReviewsTable.svelte";
-	//export let name;
+	import { data } from "./DataBaseSimulator";
 </script>
 
 <main>
 	<h1>Films Review </h1>
 	
-	<NewReview/>
-	<ReviewsTable/>
+	<NewReview data={data}/>
+	<ReviewsTable data={data}/>
 </main>
 
 <style>
