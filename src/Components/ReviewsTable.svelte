@@ -7,7 +7,7 @@
 </script>
 
 <main>
-
+    <a class="waves-effect waves-light btn">button</a>
     {#each reviews as review}
         <Review data={review} style="primary"></Review>
     {/each}

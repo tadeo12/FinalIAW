@@ -16,6 +16,17 @@
     }
 </script>
 <main>
+    <nav>
+        <div class="nav-wrapper">
+          <form>
+            <div class="input-field">
+              <input id="search" type="search" required>
+              <label class="label-icon" for="search"><i class="material-icons">rate_review</i></label>
+              <i class="material-icons">close</i>
+            </div>
+          </form>
+        </div>
+      </nav>
         <div id="text"><h2>Nueva opinión</h2>Ingrese una opinión/review de {filmName} </div>
         <textarea id="opinion" class="border-primary" maxlength="600" bind:value={opinion}/>
         <div id="rigthColumn">
