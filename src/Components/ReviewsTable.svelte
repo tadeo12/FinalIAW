@@ -1,15 +1,24 @@
 <script>
     import Review from "./Review.svelte";
-    import { data } from "../DataBaseSimulator";
+    import { getMoviesReviews } from '../DataBaseAPI.js';
 
-    let reviews;
-    data.subscribe(val => reviews= val)
+    let reviews = []
+    getMoviesReviews()
+    .then((e) => {
+        console.log("data", e.records)
+        reviews = e.records;
+    });
+
 </script>
 
 <main>
-    <a class="waves-effect waves-light btn">button</a>
+
     {#each reviews as review}
-        <Review data={review} style="primary"></Review>
+        <Review data={review.fields} style="primary"></Review>
+    {:else}
+        <div class="progress">
+            <div class="indeterminate"></div>
+        </div>
     {/each}
 
 </main>

@@ -10,8 +10,8 @@
     <div class="card border-{style} mb-3" style="max-width: 18rem;">
         <div class="card-header"><CardHeader estrellas={data.score} ></CardHeader></div>
         <div class="card-body text{style==="light"?"":"-"+style}">
-            <h5 class="card-title">{data.title}</h5>
-            <p class="card-text">{data.opinion}</p>
+            <h5 class="card-title">{data.movie_name}</h5>
+            <p class="card-text">{data.review}</p>
         </div>
     </div>
 </main>
