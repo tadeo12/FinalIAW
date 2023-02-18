@@ -3,41 +3,47 @@
     let filmName= "Harry Potter: Las reliquias de la muerte parte 1";
     let opinion;
 
-    import { data } from "../DataBaseSimulator";
+    import { cache } from "../DataBaseCache";  
+    import { storeMovieReview } from '../DataBaseAPI.js';
  
     
     function addReview() {
-	    data.update( prev=> [...prev, {
+	    storeMovieReview('que dice',opinion,7)
+
+      cache.update( prev=> [...prev, {
                 "id": prev.length,
-                "title": "ejemplo "+(Number(prev.length)+1),
-                "opinion": opinion,
-                "score":1 //TODO llamado a api
-        }])
+                "fields": {
+                  "movie_name": 'Harry popopoter',
+                  "review": opinion,
+                  "score": 7
+                } //TODO llamado a api
+        }]) 
     }
 </script>
 <main>
-        <div id="text"><h2>Nueva opinión</h2>Ingrese una opinión/review de {filmName} </div>
-        <textarea id="opinion" class="border-primary" maxlength="600" bind:value={opinion}/>
-        <div id="rigthColumn">
-            
-            <select name="Idioma" id="lang">
-                <option value="English">English</option>
-                <option value="Español">Español</option>
-                <option value="Português">Português</option>
-                <option value="Français">Français</option>
-                <option value="Italiano">Italiano</option>
-            </select>
-            <button id="sendButton" on:click={addReview} alt="enviar">
-                    <svg width="18px" height="17px" viewBox="-1 0 18 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <g>
-                            <polygon class="arrow" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
-                            <polygon class="arrow-fixed" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
-                            <path d="M-4.58892184e-16,0.56157424 L-4.58892184e-16,16.1929159 L9.708,8.33860465 L-1.64313008e-15,0.56157424 L-4.58892184e-16,0.56157424 Z M1.33333333,3.30246869 L7.62533333,8.34246869 L1.33333333,13.4327013 L1.33333333,3.30246869 L1.33333333,3.30246869 Z"></path>
-                        </g>
-                    </svg>
-            </button>
-        </div>
+  <div id="text"><h2>Nueva opinión</h2>Ingrese una opinión/review de {filmName} </div>
+  <textarea id="opinion" class="border-primary" maxlength="600" bind:value={opinion}/>
+  <div id="rigthColumn">
+      
+      <select name="Idioma" id="lang">
+          <option value="English">English</option>
+          <option value="Español">Español</option>
+          <option value="Português">Português</option>
+          <option value="Français">Français</option>
+          <option value="Italiano">Italiano</option>
+      </select>
+      <button id="sendButton" on:click={addReview} alt="enviar">
+              <svg width="18px" height="17px" viewBox="-1 0 18 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                  <g>
+                      <polygon class="arrow" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
+                      <polygon class="arrow-fixed" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
+                      <path d="M-4.58892184e-16,0.56157424 L-4.58892184e-16,16.1929159 L9.708,8.33860465 L-1.64313008e-15,0.56157424 L-4.58892184e-16,0.56157424 Z M1.33333333,3.30246869 L7.62533333,8.34246869 L1.33333333,13.4327013 L1.33333333,3.30246869 L1.33333333,3.30246869 Z"></path>
+                  </g>
+              </svg>
+      </button>
+  </div>
 </main>
+
 <style lang="scss">
     
   main {
