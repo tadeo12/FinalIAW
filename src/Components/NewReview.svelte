@@ -3,16 +3,21 @@
     let filmName= "Harry Potter: Las reliquias de la muerte parte 1";
     let opinion;
 
-    import { data } from "../DataBaseSimulator";
+    import { cache } from "../DataBaseCache";  
+    import { storeMovieReview } from '../DataBaseAPI.js';
  
     
     function addReview() {
-	    data.update( prev=> [...prev, {
+	    storeMovieReview('que dice',opinion,7)
+
+      cache.update( prev=> [...prev, {
                 "id": prev.length,
-                "title": "ejemplo "+(Number(prev.length)+1),
-                "opinion": opinion,
-                "score":1 //TODO llamado a api
-        }])
+                "fields": {
+                  "movie_name": 'Harry popopoter',
+                  "review": opinion,
+                  "score": 7
+                } //TODO llamado a api
+        }]) 
     }
 </script>
 <main>

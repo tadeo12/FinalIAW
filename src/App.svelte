@@ -7,13 +7,13 @@
 <script>
 	import NewReview from "./Components/NewReview.svelte";
 	import ReviewsTable from "./Components/ReviewsTable.svelte";
-	import { data } from "./DataBaseSimulator";
+	import { cache } from "./DataBaseCache";
   
 </script>
 
 <main>	
-	<NewReview data={data}/>
-	<ReviewsTable data={data}/>
+	<NewReview data={cache}/>
+	<ReviewsTable data={cache}/>
 </main>
 
 <style>

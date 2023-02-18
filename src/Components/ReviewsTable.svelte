@@ -1,13 +1,20 @@
 <script>
     import Review from "./Review.svelte";
     import { getMoviesReviews } from '../DataBaseAPI.js';
+    import  {cache}  from "../DataBaseCache";  
 
     let reviews = []
+
+    cache.subscribe((value) => (reviews = value));
+
+    cache.subscribe(val => reviews= val)
     getMoviesReviews()
     .then((e) => {
         console.log("data", e.records)
-        reviews = e.records;
+        cache.set(e.records)
     });
+
+    
 
 </script>
 
