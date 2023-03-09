@@ -5,7 +5,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "start": "sirv public --no-clear"
+    "start": "sirv public --no-clear -s"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
@@ -25,6 +25,7 @@
     "materialize-css": "^1.0.0-rc.2",
     "seatable-api": "^1.0.31",
     "sirv-cli": "^2.0.0",
+    "svelte-routing": "^1.6.0",
     "vite": "^4.0.4"
   }
 }

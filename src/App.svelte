@@ -3,36 +3,30 @@
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-<!-- Compiled and minified JavaScript -->
+
 <script>
-	import NewReview from "./Components/NewReview.svelte";
-	import ReviewsTable from "./Components/ReviewsTable.svelte";
-	import { cache } from "./DataBaseCache";
-  
+	import { Router, Link, Route } from "svelte-routing";
+	import Main from './Routes/MainPage.svelte';
+	import Ejemplo from './Routes/EjemploPage.svelte';
+	import NavBar from "./Components/NavBar.svelte";
+	
 </script>
 
 <main>	
-	<NewReview data={cache}/>
-	<ReviewsTable data={cache}/>
+	<Router>
+		<NavBar></NavBar>
+		<div>
+			<Route path="/">
+				<Main></Main>
+			</Route>
+			<Route path="/ejemplo">
+				<Ejemplo></Ejemplo>
+			</Route>
+			
+		</div>
+	</Router>
 </main>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-		
-	}
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 300;
-	}
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
+
 </style>
