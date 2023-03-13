@@ -15,6 +15,26 @@
       </ul>
     </div>
 </nav>
+
 <style>
-  
+  a.link {
+    
+    color: black;
+		text-transform: uppercase;
+		font-size: 4em;
+		font-weight: 300;
+  }
+  #Link{
+    color: black;
+		text-transform: uppercase;
+		font-size: 4em;
+		font-weight: 300;
+  }
+  a {
+    color: black;
+		text-transform: uppercase;
+		font-size: 4em;
+		font-weight: 300;
+    text-decoration: none !important;
+  }
 </style>

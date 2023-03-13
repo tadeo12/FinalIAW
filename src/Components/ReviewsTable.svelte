@@ -5,6 +5,8 @@
 
     let reviews = []
 
+    export let filmName;
+
     cache.subscribe((value) => (reviews = value));
 
     cache.subscribe(val => reviews= val)
@@ -21,7 +23,9 @@
 <main>
 
     {#each reviews as review}
-        <Review data={review.fields} style="primary"></Review>
+        {#if review.fields.movie_name.includes(filmName)}
+            <Review data={review.fields} style="primary"></Review>
+        {/if}
     {:else}
         <div class="progress">
             <div class="indeterminate"></div>

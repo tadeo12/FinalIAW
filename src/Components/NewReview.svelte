@@ -1,19 +1,19 @@
 
 <script>
-    let filmName= "Harry Potter: Las reliquias de la muerte parte 1";
+    export let filmName;
     let opinion;
 
     import { cache } from "../DataBaseCache";  
     import { storeMovieReview } from '../DataBaseAPI.js';
  
-    
+   
     function addReview() {
-	    storeMovieReview('que dice',opinion,7)
+	    storeMovieReview(filmName,opinion,7)
 
       cache.update( prev=> [...prev, {
                 "id": prev.length,
                 "fields": {
-                  "movie_name": 'Harry popopoter',
+                  "movie_name": filmName,
                   "review": opinion,
                   "score": 7
                 } //TODO llamado a api
@@ -21,7 +21,7 @@
     }
 </script>
 <main>
-  <div id="text"><h2>Nueva opinión</h2>Ingrese una opinión/review de {filmName} </div>
+  <div id="text"><h2>Ingrese una opinión/review de "{filmName}" </h2></div>
   <textarea id="opinion" class="border-primary" maxlength="600" bind:value={opinion}/>
   <div id="rigthColumn">
       

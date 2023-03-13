@@ -4,11 +4,19 @@
 	import ReviewsTable from "../Components/ReviewsTable.svelte";
 	import { cache } from "../DataBaseCache";
   
+	let filmName = "Harry Potter"
+
+	function handleInputFilmName(event) {
+    	filmName = event.target.value;
+  	}
 </script>
 
-<main>	
-	<NewReview data={cache}/>
-	<ReviewsTable data={cache}/>
+<main>
+	<div class="input-field col s6">
+		<input placeholder="Pelicula" id="first_name" type="text" bind:value={filmName} on:input={handleInputFilmName} >
+	  </div>	
+	<NewReview data={cache} filmName={filmName}/>
+	<ReviewsTable data={cache} filmName={filmName}/>
 </main>
 
 <style>
