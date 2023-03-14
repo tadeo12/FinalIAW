@@ -1,7 +1,7 @@
 
 <script>
 	import NewReview from "../Components/NewReview.svelte";
-	import ReviewsTable from "../Components/ReviewsTable.svelte";
+	import MoviesTable from "../Components/MoviesTable.svelte";
 	import { cache } from "../DataBaseCache";
 	import { getMovies } from '../MoviesAPI.js';
 
@@ -32,7 +32,7 @@
 		</button>
 	  </div>	
 	<NewReview data={cache} filmName={filmName}/>
-	<ReviewsTable data={cache} movies={movies} filmName={filmName}/>
+	<MoviesTable data={cache} movies={movies} filmName={filmName}/>
 </main>
 
 <style>

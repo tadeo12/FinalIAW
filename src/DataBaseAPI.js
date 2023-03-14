@@ -1,11 +1,11 @@
 
 let apikey = 'Bearer keyaAqew4N5sdMh8L'; // /*/* Mover key a lugar seguro.
 
-export const getMoviesReviews = () => {
+export const getMoviesReviews = (movie_id) => {
 
 
   return fetch(
-    'https://api.airtable.com/v0/appA5uN9mWLeGrWuz/Table%201?maxRecords=10&view=Grid%20view',
+    'https://api.airtable.com/v0/appA5uN9mWLeGrWuz/Table%201?filterByFormula=%7Bmovie_id%7D+%3D+'+movie_id+'&maxRecords=10&view=Grid%20view',
     {
         method: 'GET',
         headers: {			

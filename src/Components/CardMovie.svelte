@@ -1,5 +1,5 @@
 <script>
-
+    import { link } from "svelte-routing";
     export let data;
     
 </script>
@@ -14,7 +14,7 @@
           <p>{data.overview}</p>
         </div>
         <div class="card-action">
-          <a href="#">This is a link</a>
+          <a href="/reviewsTable/{data.id}" replace>Mirar opiniones</a>
         </div>
       </div>
     </div>

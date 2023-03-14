@@ -9,6 +9,7 @@
 	import Main from './Routes/MainPage.svelte';
 	import Ejemplo from './Routes/EjemploPage.svelte';
 	import NavBar from "./Components/NavBar.svelte";
+	import ReviewsTable from "./Routes/ReviewsTable.svelte";
 	
 </script>
 
@@ -18,6 +19,9 @@
 		<div>
 			<Route path="/">
 				<Main></Main>
+			</Route>
+			<Route path="/reviewsTable/:id" let:params>
+				<ReviewsTable movieID={params.id}/>
 			</Route>
 			<Route path="/ejemplo">
 				<Ejemplo></Ejemplo>
