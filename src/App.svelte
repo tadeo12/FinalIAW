@@ -20,8 +20,8 @@
 			<Route path="/">
 				<Main></Main>
 			</Route>
-			<Route path="/reviewsTable/:id" let:params>
-				<ReviewsTable movieID={params.id}/>
+			<Route path="/reviewsTable/:id/:filmName" let:params>
+				<ReviewsTable movieID={params.id} filmName={params.filmName}/>
 			</Route>
 			<Route path="/ejemplo">
 				<Ejemplo></Ejemplo>

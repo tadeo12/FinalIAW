@@ -4,6 +4,7 @@
     import { getMoviesReviews } from '../DataBaseAPI.js';
     import  {cache}  from "../DataBaseCache";  
     import { getMovies } from '../MoviesAPI.js';
+    import NewReview from "../Components/NewReview.svelte";
 
     let reviews = []
 
@@ -19,20 +20,12 @@
         console.log("data", e.records)
         cache.set(e.records)
     });
-
-/*
-    let movies = []
-
-    getMovies()
-    .then((e) => {
-        console.log("data movies", e)
-        movies=e.results;
-    });
-*/
     
 </script>
 
 <main>
+
+    <NewReview data={cache} movie_id={movieID} filmName={filmName}/>
 
     {#each reviews as review}
         <Review data={review.fields} style="primary"></Review>

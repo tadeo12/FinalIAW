@@ -14,7 +14,7 @@
           <p>{data.overview}</p>
         </div>
         <div class="card-action">
-          <a href="/reviewsTable/{data.id}" replace>Mirar opiniones</a>
+          <a href="/reviewsTable/{data.id}/{data.original_title}" replace>Mirar opiniones</a>
         </div>
       </div>
     </div>

@@ -1,6 +1,5 @@
 
 <script>
-	import NewReview from "../Components/NewReview.svelte";
 	import MoviesTable from "../Components/MoviesTable.svelte";
 	import { cache } from "../DataBaseCache";
 	import { getMovies } from '../MoviesAPI.js';
@@ -31,7 +30,6 @@
 			<i class="material-icons right">send</i>
 		</button>
 	  </div>	
-	<NewReview data={cache} filmName={filmName}/>
 	<MoviesTable data={cache} movies={movies} filmName={filmName}/>
 </main>
 

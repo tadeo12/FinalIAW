@@ -19,30 +19,11 @@
         cache.set(e.records)
     });
 
-/*
-    let movies = []
-
-    getMovies()
-    .then((e) => {
-        console.log("data movies", e)
-        movies=e.results;
-    });
-*/
     
 </script>
 
 <main>
-<!--
-    {#each reviews as review}
-        {#if review.fields.movie_name.includes(filmName)}
-            <Review data={review.fields} style="primary"></Review>
-        {/if}
-    {:else}
-        <div class="progress">
-            <div class="indeterminate"></div>
-        </div>
-    {/each}
--->
+
     {#each movies as movie}
         <Movie data={movie} style="primary"></Movie>
     {:else}

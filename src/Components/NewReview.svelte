@@ -1,6 +1,7 @@
 
 <script>
     export let filmName;
+    export let movie_id;
     let opinion;
 
     import { cache } from "../DataBaseCache";  
@@ -8,14 +9,15 @@
  
    
     function addReview() {
-	    storeMovieReview(filmName,opinion,7)
+	    storeMovieReview(movie_id,filmName,opinion,7)
 
       cache.update( prev=> [...prev, {
                 "id": prev.length,
                 "fields": {
                   "movie_name": filmName,
                   "review": opinion,
-                  "score": 7
+                  "score": 7,
+                  "movie_id": movie_id
                 } //TODO llamado a api
         }]) 
     }
