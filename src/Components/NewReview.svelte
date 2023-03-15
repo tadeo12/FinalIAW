@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 <script>
     export let filmName;
@@ -6,34 +7,56 @@
 
     import { cache } from "../DataBaseCache";  
     import { storeMovieReview } from '../DataBaseAPI.js';
- 
+    
+    import { getReviewAnalysis } from '../SentimentAPI.js';
    
     function addReview() {
-	    storeMovieReview(movie_id,filmName,opinion,7)
 
-      cache.update( prev=> [...prev, {
-                "id": prev.length,
-                "fields": {
-                  "movie_name": filmName,
-                  "review": opinion,
-                  "score": 7,
-                  "movie_id": movie_id
-                } //TODO llamado a api
-        }]) 
+        getReviewAnalysis(opinion, "es")
+        .then(response => response.body)
+        .then(data => data.score_tag)
+        .then(scoreTag => {
+            console.log(scoreTag)
+            let score = scoreTagToNumber(scoreTag);
+            
+            storeMovieReview(movie_id,filmName,opinion,score)
+            cache.update( prev=> [...prev, {
+                    "id": prev.length,
+                    "fields": {
+                        "movie_name": filmName,
+                        "review": opinion,
+                        "score": score,
+                        "movie_id": movie_id
+                    } //TODO llamado a api
+            }])
+        })
+        .catch(error => console.log('error', error));
+         
     }
+
+    function scoreTagToNumber(scoreTag){
+        switch (scoreTag){
+            case "P+":
+                return 5;
+            case "P":
+                return 4;
+            case "NEU":
+                return 3;
+            case "N":
+                return 2;
+            case "N+":
+                return 1;
+            default:
+                return 3;
+        }
+    }
+
 </script>
 <main>
   <div id="text"><h2>Ingrese una opinión/review de "{filmName}" </h2></div>
   <textarea id="opinion" class="border-primary" maxlength="600" bind:value={opinion}/>
   <div id="rigthColumn">
       
-      <select name="Idioma" id="lang">
-          <option value="English">English</option>
-          <option value="Español">Español</option>
-          <option value="Português">Português</option>
-          <option value="Français">Français</option>
-          <option value="Italiano">Italiano</option>
-      </select>
       <button id="sendButton" on:click={addReview} alt="enviar">
               <svg width="18px" height="17px" viewBox="-1 0 18 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                   <g>
@@ -44,7 +67,9 @@
               </svg>
       </button>
   </div>
+    
 </main>
+
 
 <style lang="scss">
     

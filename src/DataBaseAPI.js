@@ -22,6 +22,7 @@ export const getMoviesReviews = (movie_id) => {
 
 export const storeMovieReview = (movie_id,movie_name,review,score) => {
   console.log("movie id:",movie_id)
+
   return fetch(
     'https://api.airtable.com/v0/appA5uN9mWLeGrWuz/Table%201',
     {
