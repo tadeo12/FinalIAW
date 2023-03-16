@@ -1,7 +1,5 @@
 <script>
-    import Review from "./Review.svelte";
     import Movie from "./CardMovie.svelte";
-    import { getMovieReviews } from '../DataBaseAPI.js';
     import  {cache}  from "../DataBaseCache";  
     import { getMovies } from '../MoviesAPI.js';
     
@@ -30,10 +28,16 @@
 
 <style>
     main{
-        display:flex;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        grid-gap: 1em;
+        padding-top: 1em;
+        margin: auto;
+
+        /* display:flex;
         justify-content:left;
 		    flex-wrap:wrap;
         padding-top: 1em;
-        margin: auto;
+        margin: auto; */
     }
 </style>
