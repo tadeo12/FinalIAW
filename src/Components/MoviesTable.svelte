@@ -1,31 +1,25 @@
 <script>
     import Review from "./Review.svelte";
-    import { getMoviesReviews } from '../DataBaseAPI.js';
+    import Movie from "./CardMovie.svelte";
+    import { getMovieReviews } from '../DataBaseAPI.js';
     import  {cache}  from "../DataBaseCache";  
-
+    import { getMovies } from '../MoviesAPI.js';
+    
     let reviews = []
 
     export let filmName;
+    export let movies;
 
     cache.subscribe((value) => (reviews = value));
 
     cache.subscribe(val => reviews= val)
-    getMoviesReviews()
-    .then((e) => {
-        console.log("data", e.records)
-        cache.set(e.records)
-    });
-
-    
 
 </script>
 
 <main>
 
-    {#each reviews as review}
-        {#if review.fields.movie_name.includes(filmName)}
-            <Review data={review.fields} style="primary"></Review>
-        {/if}
+    {#each movies as movie}
+        <Movie data={movie} style="primary"></Movie>
     {:else}
         <div class="progress">
             <div class="indeterminate"></div>

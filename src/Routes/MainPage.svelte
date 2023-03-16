@@ -1,22 +1,36 @@
 
 <script>
-	import NewReview from "../Components/NewReview.svelte";
-	import ReviewsTable from "../Components/ReviewsTable.svelte";
+	import MoviesTable from "../Components/MoviesTable.svelte";
 	import { cache } from "../DataBaseCache";
-  
-	let filmName = "Harry Potter"
+	import { getMovies } from '../MoviesAPI.js';
+
+	let filmName = ""
 
 	function handleInputFilmName(event) {
     	filmName = event.target.value;
+  	}
+
+
+	let movies = []
+
+	function searchMovies() {
+    	
+		getMovies(filmName)
+		.then((e) => {
+			console.log("data movies", e)
+			movies=e.results;
+		});
   	}
 </script>
 
 <main>
 	<div class="input-field col s6">
 		<input placeholder="Pelicula" id="first_name" type="text" bind:value={filmName} on:input={handleInputFilmName} >
+		<button class="btn waves-effect waves-light"  on:click={searchMovies} name="action"> Search
+			<i class="material-icons right">send</i>
+		</button>
 	  </div>	
-	<NewReview data={cache} filmName={filmName}/>
-	<ReviewsTable data={cache} filmName={filmName}/>
+	<MoviesTable data={cache} movies={movies} filmName={filmName}/>
 </main>
 
 <style>
