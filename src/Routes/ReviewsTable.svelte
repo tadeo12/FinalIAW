@@ -1,16 +1,16 @@
 <script>
     import Review from "../Components/Review.svelte";
-    import Movie from "../Components/CardMovie.svelte";
+  
     import { getMovieReviews } from '../DataBaseAPI.js';
     import  {cache}  from "../DataBaseCache";  
-    import { getMovies } from '../MoviesAPI.js';
+   
     import NewReview from "../Components/NewReview.svelte";
 
     let reviews = []
 
     export let filmName;
     export let movieID;
-    export let movies;
+    let cargando = true;
 
     cache.subscribe((value) => (reviews = value));
 
@@ -19,8 +19,10 @@
     .then((e) => {
         console.log("data", e.records)
         cache.set(e.records)
+        cargando= false;
     });
-    
+   
+
 </script>
 
 <main>
@@ -30,9 +32,20 @@
     {#each reviews as review}
         <Review data={review.fields} style="primary"></Review>
     {:else}
-        <div class="progress">
-            <div class="indeterminate"></div>
-        </div>
+        {#if cargando}
+            <div class="progress">
+                <div class="indeterminate"></div>
+            </div>
+        {:else}
+            
+                <div class="card amber darken-2" style="margin: auto;">
+                    <div class="card-content white-text">
+                        <span class="card-title">Sin opiniones</span>
+                        <p>Todavia no has guardado ninguna opinion de esta pelicula</p>
+                    </div>
+                </div>
+              
+        {/if}
     {/each}
 
 

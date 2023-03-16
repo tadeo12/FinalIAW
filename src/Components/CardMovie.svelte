@@ -12,7 +12,7 @@
           {#if data && data.backdrop_path}
             <div class="card-image">
               <img src= {"https://image.tmdb.org/t/p/w500"+data.backdrop_path}>
-             
+              <span class="card-title">{data.original_title}</span>
             </div>
           {:else}
             <span class="card-title">{data.original_title}</span>
