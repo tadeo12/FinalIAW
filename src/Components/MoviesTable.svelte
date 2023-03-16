@@ -8,6 +8,8 @@
     export let filmName;
     export let movies;
 
+    export let cargando;
+
     cache.subscribe((value) => (reviews = value));
 
     cache.subscribe(val => reviews= val)
@@ -19,9 +21,22 @@
     {#each movies as movie}
         <Movie data={movie} style="primary"></Movie>
     {:else}
-        <div class="progress">
-            <div class="indeterminate"></div>
-        </div>
+        {#if cargando}
+            <div class="progress">
+                <div class="indeterminate"></div>
+            </div>
+        {:else}
+            <div class="row">
+                <div class="col s12 m6">
+                <div class="card  red darken-3">
+                    <div class="card-content white-text">
+                    <span class="card-title">Sin resultados</span>
+                    <p>Lo siento, no se encontraron peliculas con la busqueda actual.</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+        {/if}
     {/each}
 
 </main>
@@ -33,11 +48,5 @@
         grid-gap: 1em;
         padding-top: 1em;
         margin: auto;
-
-        /* display:flex;
-        justify-content:left;
-		    flex-wrap:wrap;
-        padding-top: 1em;
-        margin: auto; */
     }
 </style>

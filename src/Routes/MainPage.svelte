@@ -13,13 +13,17 @@
 
 	let movies = []
 
+	let buscando = false;
+
 	function searchMovies() {
-    	
+    	buscando=true;
+		movies=[];
 		getMovies(filmName)
 		.then((e) => {
 			console.log("data movies", e)
 			movies=e.results;
-		});
+			buscando=false;
+		})
   	}
 </script>
 
@@ -30,7 +34,7 @@
 			<i class="material-icons right">send</i>
 		</button>
 	  </div>	
-	<MoviesTable data={cache} movies={movies} filmName={filmName}/>
+	<MoviesTable data={cache} movies={movies} filmName={filmName} cargando={buscando}/>
 </main>
 
 <style>
