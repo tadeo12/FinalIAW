@@ -1,7 +1,7 @@
 
 let apikey = 'Bearer keyaAqew4N5sdMh8L'; // /*/* Mover key a lugar seguro.
 
-export const getMoviesReviews = (movie_id) => {
+export const getMovieReviews = (movie_id) => {
 
 
   return fetch(

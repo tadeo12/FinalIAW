@@ -4,7 +4,7 @@
 	import { cache } from "../DataBaseCache";
 	import { getMovies } from '../MoviesAPI.js';
 
-	let filmName = "Harry Potter"
+	let filmName = ""
 
 	function handleInputFilmName(event) {
     	filmName = event.target.value;
@@ -26,7 +26,7 @@
 <main>
 	<div class="input-field col s6">
 		<input placeholder="Pelicula" id="first_name" type="text" bind:value={filmName} on:input={handleInputFilmName} >
-		<button class="btn waves-effect waves-light" type="submit" on:click={searchMovies} name="action">Submit
+		<button class="btn waves-effect waves-light"  on:click={searchMovies} name="action"> Search
 			<i class="material-icons right">send</i>
 		</button>
 	  </div>	

@@ -1,7 +1,7 @@
 <script>
     import Review from "../Components/Review.svelte";
     import Movie from "../Components/CardMovie.svelte";
-    import { getMoviesReviews } from '../DataBaseAPI.js';
+    import { getMovieReviews } from '../DataBaseAPI.js';
     import  {cache}  from "../DataBaseCache";  
     import { getMovies } from '../MoviesAPI.js';
     import NewReview from "../Components/NewReview.svelte";
@@ -15,7 +15,7 @@
     cache.subscribe((value) => (reviews = value));
 
     cache.subscribe(val => reviews= val)
-    getMoviesReviews(movieID)
+    getMovieReviews(movieID)
     .then((e) => {
         console.log("data", e.records)
         cache.set(e.records)

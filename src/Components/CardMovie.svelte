@@ -2,12 +2,14 @@
     import { link } from "svelte-routing";
     export let data;
     
+    const urlImagen= data && data.backdrop_path ? "https://image.tmdb.org/t/p/w500"+data.backdrop_path : null;
+
 </script>
 <div class="row">
     <div class="col s12 m7">
       <div class="card">
         <div class="card-image">
-          <img src="https://image.tmdb.org/t/p/w500{data.backdrop_path}">
+          <img src={urlImagen}>
           <span class="card-title">{data.original_title}</span>
         </div>
         <div class="card-content">
