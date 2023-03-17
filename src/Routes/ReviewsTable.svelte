@@ -94,7 +94,7 @@
         <NewReview data={cache} movie_id={movieID} filmName={filmName}/>
     </div>
     <div class="divider"></div>
-    <div class="section">
+    <div id="grilla" class="section">
         {#each reviews as review}
         <Review data={review.fields} style="primary"></Review>
     {:else}
@@ -117,3 +117,25 @@
 
 
 </main>
+
+
+<style>
+    #grilla{
+        
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-gap: 1em;
+        padding-top: 1em;
+        margin: 0;
+    
+
+
+   
+    
+    }
+    /* @media (min-width: 768px) {
+        main {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    } */
+</style>
