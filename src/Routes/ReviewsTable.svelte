@@ -3,6 +3,7 @@
   
     import { getMovieReviews } from '../DataBaseAPI.js';
     import  {cache}  from "../DataBaseCache";  
+    import { getMovieGPT } from '../ChatGPTAPI.js';
    
     import NewReview from "../Components/NewReview.svelte";
 
@@ -22,10 +23,37 @@
         cargando= false;
     });
    
+    let chatGPTdescription = []
+
+	getMovieGPT(filmName)
+	.then((e) => {
+			console.log("chat gpt", e)
+			chatGPTdescription[0]=e.choices[0].message.content;
+		})
 
 </script>
 
 <main>
+
+
+    <div class="row">
+        <div class="col s12 m6">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">{filmName}</span>
+                {#each chatGPTdescription as chatAnswer}
+                    {chatAnswer}
+                {:else}
+                    <div class="progress">
+                        <div class="indeterminate"></div>
+                    </div>
+                {/each}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    
 
     <NewReview data={cache} movie_id={movieID} filmName={filmName}/>
 
