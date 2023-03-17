@@ -3,7 +3,12 @@
   
     import { getMovieReviews } from '../DataBaseAPI.js';
     import  {cache}  from "../DataBaseCache";  
-   
+    import { getMovieGPT } from '../ChatGPTAPI.js';
+    import { getMovieGPTGeneralReview } from '../ChatGPTAPI.js';
+    import { getReviewAnalysis } from '../SentimentAPI.js';
+    import CardHeader from "../Components/CardHeader.svelte"; 
+    
+
     import NewReview from "../Components/NewReview.svelte";
 
     let reviews = []
@@ -22,14 +27,75 @@
         cargando= false;
     });
    
+    let chatGPTdescription = []
+
+	getMovieGPT(filmName)
+	.then((e) => {
+			console.log("chat gpt", e)
+			chatGPTdescription[0]=e.choices[0].message.content;
+		})
+
+    let chatGPTOpinion = []
+    let chatGPTOpinionAnalysis = []
+
+    getMovieGPTGeneralReview(filmName)
+    .then((e) => {
+            console.log("chat gpt", e)
+            chatGPTOpinion[0]=e.choices[0].message.content;
+
+            getReviewAnalysis(chatGPTOpinion[0], "es")
+            .then(response => response.body)
+            .then(data => data.score_tag)
+            .then(scoreTag => {
+                chatGPTOpinionAnalysis[0]=scoreTag
+            })
+        })
 
 </script>
 
 <main>
 
-    <NewReview data={cache} movie_id={movieID} filmName={filmName}/>
-
-    {#each reviews as review}
+    <div class="divider"></div>
+    <div class="section">
+        <div class="row">
+            <div class="col s12 m6">
+              <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                  <span class="card-title">{filmName}</span>
+                    <div class="divider"></div>
+                    <div class="section">
+                        {#each chatGPTdescription as chatAnswer}
+                            {chatAnswer}
+                        {:else}
+                            <div class="progress">
+                                <div class="indeterminate"></div>
+                            </div>
+                        {/each}
+                    </div>
+                    <div class="divider"></div>
+                    <div class="section">
+                        {#each chatGPTOpinionAnalysis as chatValorations}
+                            <CardHeader estrellas={chatValorations}/>
+                            <p>{chatGPTOpinion[0]}</p>
+                        {:else}
+                            <div class="progress">
+                                <div class="indeterminate"></div>
+                            </div>
+                        {/each}
+                    </div>
+                    
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+    <div class="divider"></div>
+    <div class="section">
+        <NewReview data={cache} movie_id={movieID} filmName={filmName}/>
+    </div>
+    <div class="divider"></div>
+    <div class="section">
+        {#each reviews as review}
         <Review data={review.fields} style="primary"></Review>
     {:else}
         {#if cargando}
@@ -38,7 +104,7 @@
             </div>
         {:else}
             
-                <div class="card amber darken-2" style="margin: auto;">
+                <div class="card amber darken-2" style="margin: auto; max-width:500px;">
                     <div class="card-content white-text">
                         <span class="card-title">Sin opiniones</span>
                         <p>Todavia no has guardado ninguna opinion de esta pelicula</p>
@@ -47,16 +113,7 @@
               
         {/if}
     {/each}
+    </div>
 
 
 </main>
-
-<style>
-    main{
-        display:flex;
-        justify-content:left;
-		    flex-wrap:wrap;
-        padding-top: 1em;
-        margin: auto;
-    }
-</style>

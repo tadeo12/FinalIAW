@@ -3,6 +3,7 @@
 	import MoviesTable from "../Components/MoviesTable.svelte";
 	import { cache } from "../DataBaseCache";
 	import { getMovies } from '../MoviesAPI.js';
+	import { getMovieGPT } from '../ChatGPTAPI.js';
 
 	let filmName = ""
 
@@ -25,6 +26,15 @@
 			buscando=false;
 		})
   	}
+
+	let description = []
+
+	getMovieGPT()
+	.then((e) => {
+			console.log("chat gpt", e)
+			//description=e.choices.message;
+		})
+
 </script>
 
 <main>

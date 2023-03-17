@@ -9,14 +9,14 @@
     import { storeMovieReview } from '../DataBaseAPI.js';
     
     import { getReviewAnalysis } from '../SentimentAPI.js';
-   
+
     function addReview() {
 
         getReviewAnalysis(opinion, "es")
         .then(response => response.body)
         .then(data => data.score_tag)
         .then(scoreTag => {
-            console.log(scoreTag)
+            console.log("scoreTag:",scoreTag)
             let score = scoreTagToNumber(scoreTag);
             
             storeMovieReview(movie_id,filmName,opinion,score)
