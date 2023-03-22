@@ -7,7 +7,7 @@
     import { getMovieGPTGeneralReview } from '../ChatGPTAPI.js';
     import { getMoviekeywordsGPT } from '../ChatGPTAPI.js';
     import { getReviewAnalysis } from '../SentimentAPI.js';
-    import { getImage } from '../DalleAPI.js';
+  
 
     import CardHeader from "../Components/CardHeader.svelte"; 
     
@@ -54,16 +54,7 @@
             })
         })
 
-    let poster = [];
-    getMoviekeywordsGPT(filmName)
-    .then((e) => {
-            console.log("chat gpt keywords", e)
-
-            getImage(e.choices[0].message.content)
-            .then((e) => {
-            poster[0]=e.data[0].url
-            })
-        })
+    
         
 </script>
 
@@ -81,21 +72,6 @@
 
                         <!-- svelte-ignore a11y-missing-attribute -->
                         
-                        {#each poster as imageMovie}
-                            <img class="materialboxed" width="512" src={imageMovie}/>
-                        {:else}
-                            <div class="preloader-wrapper big active"  width="512">
-                                <div class="spinner-layer spinner-blue-only">
-                                <div class="circle-clipper left">
-                                    <div class="circle"></div>
-                                </div><div class="gap-patch">
-                                    <div class="circle"></div>
-                                </div><div class="circle-clipper right">
-                                    <div class="circle"></div>
-                                </div>
-                                </div>
-                            </div>
-                        {/each}
 
                         {#each chatGPTdescription as chatAnswer}
                             {chatAnswer}

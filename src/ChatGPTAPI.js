@@ -36,5 +36,5 @@ export const getMovieGPTGeneralReview = (filmName) => {
 }
 
 export const getMoviekeywordsGPT = (filmName) => {
-    return getBychatGPT("tell me 5 keywords that describe a landscape from the "+filmName+" movie");
+    return getBychatGPT("tell me a short phrase to generate a image of "+filmName+" movie with an IA image Generator");
 }
