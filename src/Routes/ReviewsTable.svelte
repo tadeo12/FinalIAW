@@ -7,7 +7,10 @@
     import { getMovieGPTGeneralReview } from '../ChatGPTAPI.js';
     import { getMoviekeywordsGPT } from '../ChatGPTAPI.js';
     import { getReviewAnalysis } from '../SentimentAPI.js';
+
+    import {deleteMovieReview} from "../DataBaseAPI"
   
+    import { onMount } from 'svelte';
 
     import CardHeader from "../Components/CardHeader.svelte"; 
     
@@ -25,7 +28,7 @@
     cache.subscribe(val => reviews= val)
     getMovieReviews(movieID)
     .then((e) => {
-        console.log("data", e.records)
+        console.log("A: "+e.records)
         cache.set(e.records)
         cargando= false;
     });
@@ -52,9 +55,13 @@
             .then(scoreTag => {
                 chatGPTOpinionAnalysis[0]=scoreTag
             })
-        })
+    });
 
-    
+    function deleteReview(id) {
+        deleteMovieReview(id); // eliminamos la opinión de la API
+        reviews = reviews.filter(review => review.id !== id);// eliminamos la opinión de la lista de opiniones que se muestra
+
+    }
         
 </script>
 
@@ -105,23 +112,24 @@
     <div class="divider"></div>
     <div id="grilla" class="section">
         {#each reviews as review}
-        <Review data={review.fields} style="primary"></Review>
-    {:else}
-        {#if cargando}
-            <div class="progress">
-                <div class="indeterminate"></div>
-            </div>
-        {:else}
             
-                <div class="card amber darken-2" style="margin: auto; max-width:500px;">
-                    <div class="card-content white-text">
-                        <span class="card-title">Sin opiniones</span>
-                        <p>Todavia no has guardado ninguna opinion de esta pelicula</p>
-                    </div>
+            <Review data={review.fields} on:deleteReview={(e)=>deleteReview(e.detail)} reviewID={review.id} style="primary" ></Review>
+        {:else}
+            {#if cargando}
+                <div class="progress">
+                    <div class="indeterminate"></div>
                 </div>
-              
-        {/if}
-    {/each}
+            {:else}
+                
+                    <div class="card amber darken-2" style="margin: auto; max-width:500px;">
+                        <div class="card-content white-text">
+                            <span class="card-title">Sin opiniones</span>
+                            <p>Todavia no has guardado ninguna opinion de esta pelicula</p>
+                        </div>
+                    </div>
+                
+            {/if}
+        {/each}
     </div>
 
 
@@ -130,21 +138,11 @@
 
 <style>
     #grilla{
-        
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         grid-gap: 1em;
         padding-top: 1em;
         margin: 0;
     
-
-
-   
-    
     }
-    /* @media (min-width: 768px) {
-        main {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-    } */
 </style>

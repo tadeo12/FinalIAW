@@ -49,9 +49,27 @@ export const storeMovieReview = (movie_id,movie_name,review,score) => {
         )
     }
 )
-    .then((res) => res.json()).then((responseData) => {
-      console.log(responseData);
+    .then((res) => {console.log("respuesta: "+res)
+    return res.json()
+  })
+    .then((responseData) => {
+      console.log("Respuesta: "+responseData);
       return responseData;
     })
 
 }
+
+export const deleteMovieReview = (review_id) => {
+  console.log("en deleteMovieReview: "+ review_id)
+  return fetch(
+    'https://api.airtable.com/v0/appA5uN9mWLeGrWuz/Table%201/'+review_id,
+      {
+        method: 'DELETE',
+        headers: {				//Mover id a lugar seguro
+            'Authorization': apikey,
+            'Content-Type': 'application/json'
+        }
+        
+      }
+   )
+  }

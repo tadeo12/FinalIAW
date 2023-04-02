@@ -20,6 +20,8 @@
             let score = scoreTagToNumber(scoreTag);
             
             storeMovieReview(movie_id,filmName,opinion,score)
+            .finally(answer => console.log("ACÁ:"+answer))
+            
             cache.update( prev=> [...prev, {
                     "id": prev.length,
                     "fields": {
