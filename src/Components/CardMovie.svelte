@@ -1,11 +1,12 @@
 <script>
-    import { link } from "svelte-routing";
+    import { fade } from "svelte/transition";
+
     export let data;
     
   
 
 </script>
-<div class="row">
+<div class="row" transition:fade>
     <div class="col s12 m7">
       <div class="card">
         

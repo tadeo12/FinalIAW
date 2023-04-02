@@ -15,7 +15,7 @@
 <main>
 
     {#each movies as movie}
-        <Movie data={movie} style="primary"></Movie>
+        <Movie data={movie} style="primary" ></Movie>
     {:else}
         {#if cargando}
             <div class="progress">

@@ -7,7 +7,6 @@
 <script>
 	import { Router, Link, Route } from "svelte-routing";
 	import Main from './Routes/MainPage.svelte';
-	import Ejemplo from './Routes/EjemploPage.svelte';
 	import NavBar from "./Components/NavBar.svelte";
 	import ReviewsTable from "./Routes/ReviewsTable.svelte";
 	
@@ -23,9 +22,7 @@
 			<Route path="/reviewsTable/:id/:filmName" let:params>
 				<ReviewsTable movieID={params.id} filmName={params.filmName}/>
 			</Route>
-			<Route path="/ejemplo">
-				<Ejemplo></Ejemplo>
-			</Route>
+			
 			
 		</div>
 	</Router>
