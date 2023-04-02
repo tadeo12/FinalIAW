@@ -54,9 +54,9 @@
     }
 
 </script>
-<main>
+<main class="light-blue lighten-3">
   <div id="text"><h2>Ingrese una opinión/review de "{filmName}" </h2></div>
-  <textarea id="opinion" class="border-primary" maxlength="600" bind:value={opinion}/>
+  <textarea id="opinion" class="border-primary light-blue lighten-2" maxlength="600" bind:value={opinion}/>
   <div id="rigthColumn">
       
       <button id="sendButton" on:click={addReview} alt="enviar">
@@ -79,7 +79,7 @@
         display:flex;
 		align-self:center;
 
-        border: 1px solid brown;
+        border: 1px solid blue;
         padding: 20px;
         background-color: antiquewhite;
     }
@@ -105,6 +105,8 @@
 	    padding: 20px;
         margin-right: 20px;
         width: auto;
+        height: 10rem;
+        resize: none;
     }
 
     #rigthColumn{

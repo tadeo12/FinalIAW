@@ -58,9 +58,9 @@
     });
 
     function deleteReview(id) {
-        deleteMovieReview(id); // eliminamos la opinión de la API
-        reviews = reviews.filter(review => review.id !== id);// eliminamos la opinión de la lista de opiniones que se muestra
-
+        deleteMovieReview(id); 
+        reviews = reviews.filter(review => review.id !== id);
+        // TODO ACTUALIZAR CACHE
     }
         
 </script>
@@ -71,7 +71,7 @@
     <div class="section">
         <div class="row">
             <div class="col s12 m6">
-              <div class="card blue-grey darken-1">
+              <div class="card light-blue darken-1">
                 <div class="card-content white-text">
                   <span class="card-title">{filmName}</span>
                     <div class="divider"></div>
