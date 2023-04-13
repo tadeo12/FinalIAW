@@ -35,6 +35,3 @@ export const getMovieGPTGeneralReview = (filmName) => {
     return getBychatGPT(filmName+"  critica del publico general en una oración");
 }
 
-export const getMoviekeywordsGPT = (filmName) => {
-    return getBychatGPT("tell me a short phrase to generate a image of "+filmName+" movie with an IA image Generator");
-}

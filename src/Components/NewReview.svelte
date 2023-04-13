@@ -9,6 +9,9 @@
     import { storeMovieReview } from '../DataBaseAPI.js';
     
     import { getReviewAnalysis } from '../SentimentAPI.js';
+    import { createEventDispatcher } from 'svelte';
+
+    const dispatch = createEventDispatcher();
 
     function addReview() {
 
@@ -20,17 +23,8 @@
             let score = scoreTagToNumber(scoreTag);
             
             storeMovieReview(movie_id,filmName,opinion,score)
-            .finally(answer => console.log("ACÁ:"+answer))
-            
-            cache.update( prev=> [...prev, {
-                    "id": prev.length,
-                    "fields": {
-                        "movie_name": filmName,
-                        "review": opinion,
-                        "score": score,
-                        "movie_id": movie_id
-                    } //TODO llamado a api
-            }])
+            .finally(()=>{dispatch("new-review")})
+        
         })
         .catch(error => console.log('error', error));
          

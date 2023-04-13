@@ -1,10 +1,6 @@
 <script>
     import Movie from "./CardMovie.svelte";
-    import  {cache}  from "../DataBaseCache";  
-    import { getMovies } from '../MoviesAPI.js';
     
-    let reviews = []
-
     export let filmName;
     export let movies;
 

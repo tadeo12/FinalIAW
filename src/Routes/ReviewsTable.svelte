@@ -5,12 +5,11 @@
     import  {cache}  from "../DataBaseCache";  
     import { getMovieGPT } from '../ChatGPTAPI.js';
     import { getMovieGPTGeneralReview } from '../ChatGPTAPI.js';
-    import { getMoviekeywordsGPT } from '../ChatGPTAPI.js';
     import { getReviewAnalysis } from '../SentimentAPI.js';
 
     import {deleteMovieReview} from "../DataBaseAPI"
   
-    import { onMount } from 'svelte';
+
 
     import CardHeader from "../Components/CardHeader.svelte"; 
     
@@ -26,12 +25,10 @@
     cache.subscribe((value) => (reviews = value));
 
     cache.subscribe(val => reviews= val)
-    getMovieReviews(movieID)
-    .then((e) => {
-        console.log("A: "+e.records)
-        cache.set(e.records)
-        cargando= false;
-    });
+
+    updateReviewsFromDatabase();
+
+    
    
     let chatGPTdescription = []
 
@@ -50,6 +47,7 @@
             chatGPTOpinion[0]=e.choices[0].message.content;
 
             getReviewAnalysis(chatGPTOpinion[0], "es")
+            //TODO bug si el servidor de chatgpt no retorna respuesta se rompe
             .then(response => response.body)
             .then(data => data.score_tag)
             .then(scoreTag => {
@@ -58,9 +56,23 @@
     });
 
     function deleteReview(id) {
-        deleteMovieReview(id); 
-        reviews = reviews.filter(review => review.id !== id);
-        // TODO ACTUALIZAR CACHE
+        deleteMovieReview(id)
+        .finally(
+            ()=>{
+                reviews = reviews.filter(review => review.id !== id)
+                updateReviewsFromDatabase();
+            }
+        )
+        
+    }
+
+    function updateReviewsFromDatabase(){
+        getMovieReviews(movieID)
+            .then((e) => {
+            console.log("A: "+e.records)
+            cache.set(e.records)
+            cargando= false;
+         });
     }
         
 </script>
@@ -107,7 +119,7 @@
     </div>
     <div class="divider"></div>
     <div class="section">
-        <NewReview data={cache} movie_id={movieID} filmName={filmName}/>
+        <NewReview data={cache} movie_id={movieID} filmName={filmName} on:new-review={updateReviewsFromDatabase}/>
     </div>
     <div class="divider"></div>
     <div id="grilla" class="section">
@@ -121,7 +133,7 @@
                 </div>
             {:else}
                 
-                    <div class="card amber darken-2" style="margin: auto; max-width:500px;">
+                    <div class="card red accent-1" style="margin: auto; max-width:500px;">
                         <div class="card-content white-text">
                             <span class="card-title">Sin opiniones</span>
                             <p>Todavia no has guardado ninguna opinion de esta pelicula</p>
