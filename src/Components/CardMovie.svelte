@@ -19,7 +19,7 @@
             <span class="card-title">{data.original_title}</span>
           {/if}
     
-        <div class="card-content">
+        <div class="card-content card-movie">
           <p>{data.overview}</p>
         </div>
         <div class="card-action">

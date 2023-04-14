@@ -81,6 +81,9 @@ button:focus {
 .opacity-95 {
     opacity: 0.95;
 }
+.opacity-100 {
+    opacity: 1;
+}
 
 .busqueda {
 	background-color: #ccc;
@@ -101,4 +104,9 @@ button:focus {
 	display: flex;
 	align-items: center;
 	height: 200px;
+  }
+
+  .card-movie {
+	height: 200px;
+	overflow: auto;
   }

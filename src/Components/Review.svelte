@@ -25,7 +25,7 @@
 </script>
 
 <main>
-    <div class="card border-{style} mb-3" style="max-width: 18rem;">
+    <div class="card border-{style} mb-3 opacity-80 z-depth-{data.score}" style="max-width: 18rem;">
         <div id="ch" class="card-header">
             <CardHeader estrellas={data.score} ></CardHeader>
             <!-- Modal Trigger -->

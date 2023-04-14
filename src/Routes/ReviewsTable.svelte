@@ -59,10 +59,10 @@
                 </div>
             {:else}
                 
-                    <div class="card red accent-1" style="margin: auto; max-width:500px;">
+                    <div class="card red darken-4 opacity-85" style="margin: auto; max-width:500px;">
                         <div class="card-content white-text">
                             <span class="card-title">Sin opiniones</span>
-                            <p>Todavia no has guardado ninguna opinion de esta pelicula</p>
+                            <p>Todavia no se ha guardado ninguna opinion de esta pelicula</p>
                         </div>
                     </div>
                 
