@@ -17,9 +17,9 @@
             <div class="progress">
                 <div class="indeterminate"></div>
             </div>
-        {:else}
-            
-                <div class="card  red darken-3">
+        {:else} 
+                <div/>
+                <div class="card red darken-4 opacity-85" style='margin: auto;'>
                     <div class="card-content white-text">
                         <span class="card-title">Sin resultados</span>
                         <p>Lo siento, no se encontraron peliculas con la busqueda actual.</p>
@@ -40,11 +40,10 @@
         margin: 0;
     }
 
-
-   
     @media (min-width: 768px) {
         main {
             grid-template-columns: repeat(3, minmax(0, 1fr));
         }
     }
+    
 </style>
