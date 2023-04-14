@@ -45,9 +45,8 @@
 
     <MainReview filmName={filmName}/>
     
-    <div class="section">
-        <NewReview data={cache} movie_id={movieID} filmName={filmName} on:new-review={updateReviewsFromDatabase}/>
-    </div>
+    <NewReview data={cache} movie_id={movieID} filmName={filmName} on:new-review={updateReviewsFromDatabase}/>
+    
     <div class="divider"></div>
     <div id="grilla" class="section">
         {#each reviews as review}

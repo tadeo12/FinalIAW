@@ -48,7 +48,7 @@
     }
 
 </script>
-<main class="light-blue lighten-3">
+<main class="light-blue darken-1 opacity-75">
   <div id="text"><h2>Ingrese una opinión/review de "{filmName}" </h2></div>
   <textarea id="opinion" class="border-primary light-blue lighten-2" maxlength="600" bind:value={opinion}/>
   <div id="rigthColumn">
@@ -72,10 +72,11 @@
   main {
         display:flex;
 		align-self:center;
-
-        border: 1px solid blue;
         padding: 20px;
         background-color: antiquewhite;
+        margin-right: 0.75rem;
+        margin-left: 0.75rem;
+        margin-top: -2.3rem;
     }
 
    h2{

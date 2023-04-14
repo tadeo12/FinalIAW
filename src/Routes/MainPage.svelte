@@ -38,20 +38,20 @@
 </script>
 
 <main>
-	<div class="input-field col s6">
-		<input placeholder="Pelicula" id="first_name" type="text" bind:value={filmName} on:input={handleInputFilmName} >
-		<button class="btn waves-effect waves-light"  on:click={searchMovies} name="action"> Search
-			<i class="material-icons right">send</i>
+
+	<div class="busqueda grey darken-3  opacity-85">
+		<input class="white-text text-darken-2" placeholder="Pelicula" id="first_name" type="text" bind:value={filmName} on:input={handleInputFilmName} >
+		<button  class="waves-effect waves-light btn grey darken-2" on:click={searchMovies} name="action">
+			<i class="material-icons">search</i>
 		</button>
-	  </div>	
+	</div>
+
 	<MoviesTable data={cache} movies={movies} filmName={filmName} cargando={buscando}/>
 </main>
 
 <style>
 	main {
-		text-align: center;
-		padding: 1em;
-		margin: 0;
+	
 		
 	}
 	h1 {

@@ -3,7 +3,7 @@
     import { getMovieGPTGeneralReview } from '../ChatGPTAPI.js';
     import { getReviewAnalysis } from '../SentimentAPI.js';
     import CardHeader from "../Components/CardHeader.svelte"; 
-    
+
     export let filmName;
 
     let chatGPTdescription = []
@@ -34,11 +34,11 @@
 
 
 
-<div class="divider"></div>
-<div class="section">
+
+<div class="no-margin-botton">
     <div class="row">
         <div class="col s12 m6">
-          <div class="card light-blue darken-1">
+          <div class="card light-blue darken-1 opacity-75">
             <div class="card-content white-text">
               <span class="card-title">{filmName}</span>
                 <div class="divider"></div>
@@ -72,4 +72,7 @@
         </div>
       </div>
 </div>
-<div class="divider"></div>
+
+
+
+        
