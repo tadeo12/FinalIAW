@@ -35,10 +35,10 @@
 
 
 
-<div class="no-margin-botton">
+<div class="margin-botton">
     <div class="row">
         <div class="col s12 m6">
-          <div class="card light-blue darken-1 opacity-75">
+          <div class="card light-blue darken-4 opacity-75">
             <div class="card-content white-text">
               <span class="card-title">{filmName}</span>
                 <div class="divider"></div>
@@ -73,6 +73,9 @@
       </div>
 </div>
 
+<style>
+    
+</style>
 
 
         

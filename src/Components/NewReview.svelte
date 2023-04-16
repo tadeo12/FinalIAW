@@ -48,12 +48,12 @@
     }
 
 </script>
-<main class="light-blue darken-1 opacity-75">
-  <div id="text"><h2>Ingrese una opinión/review de "{filmName}" </h2></div>
-  <textarea id="opinion" class="border-primary light-blue lighten-2" maxlength="600" bind:value={opinion}/>
+<main class="light-blue accent-1 opacity-75">
+  <label for="opinion" id="text">Nueva opinión: </label>
+  <textarea id="opinion" placeholder="Ingrese una nueva opinión/review de {filmName}" class="border-primary light-blue lighten-3" maxlength="600" bind:value={opinion}/>
   <div id="rigthColumn">
       
-      <button id="sendButton" on:click={addReview} alt="enviar">
+      <button id="sendButton" on:click={addReview} aria-label="Enviar">
               <svg width="18px" height="17px" viewBox="-1 0 18 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                   <g>
                       <polygon class="arrow" points="16.3746667 8.33860465 7.76133333 15.3067621 6.904 14.3175671 14.2906667 8.34246869 6.908 2.42790698 7.76 1.43613596"></polygon>
@@ -76,12 +76,17 @@
         background-color: antiquewhite;
         margin-right: 0.75rem;
         margin-left: 0.75rem;
-        margin-top: -2.3rem;
+        margin-top: 0rem;
     }
 
-   h2{
+   label{
     font-size: 1em;
+    color: black;
    }
+
+   textarea::placeholder {
+        color: grayscale($color: black); 
+    }
 
     #text {
         flex-basis: 4rem;

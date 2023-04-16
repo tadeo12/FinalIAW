@@ -45,9 +45,12 @@
 
     <MainReview filmName={filmName}/>
     
+    <div class="divider"></div>
+
     <NewReview data={cache} movie_id={movieID} filmName={filmName} on:new-review={updateReviewsFromDatabase}/>
     
     <div class="divider"></div>
+   
     <div id="grilla" class="row">
         {#each reviews as review}
             <Review data={review.fields} on:deleteReview={(e)=>deleteReview(e.detail)} reviewID={review.id} style="primary" ></Review>
@@ -74,6 +77,12 @@
 
 
 <style>
+
+    .divider{
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
     .grilla{
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
