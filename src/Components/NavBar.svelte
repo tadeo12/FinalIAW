@@ -2,11 +2,12 @@
 
 <script>
     import { Link } from "svelte-routing";
+    import { text } from "svelte/internal";
 </script>
 
 
   <nav class="navbar opacity-95 grey darken-3">
-    <a href="#!" class="brand-logo navbar-left">Films Reviews</a>
+    <h1 class="brand-logo navbar-left">Films Reviews</h1>
     <ul class="right hide-on-med-and-down navbar-right">
       <li><Link to="/" class=" btn-large waves-effect waves-light grey darken-1 ">
         <i class="material-icons grey darken-1">home</i>
@@ -16,38 +17,16 @@
 
 
 <style>
-
-  .link {
-    color: white;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 300;
-  }
-  #Link{
-    color: black;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 300;
-  }
-
-  a {
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 300;
-    text-decoration: none !important;
-  }
-
-
   .navbar {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 
-  color: #fff;
-  padding: 0rem;
-  margin-top: -1rem;
-  width: 100%;
-  justify-items: flex-start;
+    color: #fff;
+    padding: 0rem;
+    margin-top: 0rem;
+    width: 100%;
+    justify-items: flex-start;
 }
 
 .navbar-left {
