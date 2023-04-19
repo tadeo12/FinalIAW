@@ -9,7 +9,7 @@
   <nav class="navbar opacity-95 grey darken-3">
     <h1 class="brand-logo navbar-left">Films Reviews</h1>
     <ul class="right hide-on-med-and-down navbar-right">
-      <li><Link to="/" class=" btn-large waves-effect waves-light grey darken-1 ">
+      <li><Link to="/home" class=" btn-large waves-effect waves-light grey darken-1 ">
         <i class="material-icons grey darken-1">home</i>
       </Link></li>
     </ul>

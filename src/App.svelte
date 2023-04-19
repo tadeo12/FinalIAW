@@ -19,7 +19,13 @@
 		<NavBar></NavBar>
 		<div>
 			<Route path="/">
-				<Main></Main>
+				<Main filmNameRoute=""/>
+			</Route>
+			<Route path="/home">
+				<Main filmNameRoute=""/>
+			</Route>
+			<Route path="/movies/:filmname/"  let:params>
+				<Main filmNameRoute={params.filmname}/>
 			</Route>
 			<Route path="/reviewsTable/:id/:filmName" let:params>
 				<ReviewsTable movieID={params.id} filmName={params.filmName}/>

@@ -16,4 +16,23 @@ export const getMovies = (movie_name) => {
 
 }
 
+export const discoverMovies = () => {
+
+
+  return fetch(
+    'https://api.themoviedb.org/3/discover/movie?api_key='+apikey+'&release_date.lte=2021-01-01&page=1',
+    {
+        method: 'GET',
+    }
+)
+    .then((res) => res.json()).then((responseData) => {
+      console.log(responseData);
+      return responseData;
+    })
+
+}
+
+
+
+
 
