@@ -27,8 +27,8 @@
 			<Route path="/movies/:filmname/"  let:params>
 				<Main filmNameRoute={params.filmname}/>
 			</Route>
-			<Route path="/reviewsTable/:id/:filmName" let:params>
-				<ReviewsTable movieID={params.id} filmName={params.filmName}/>
+			<Route path="/reviewsTable/:id/:filmName/:data" let:params>
+				<ReviewsTable movieID={params.id} filmName={params.filmName} movie={JSON.parse(decodeURIComponent(params.data))}/>
 			</Route>
 			
 			

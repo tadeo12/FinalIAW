@@ -3,7 +3,14 @@
 
     export let data;
     
-  
+    let essentialdFilmData = {  original_title: data.original_title, 
+                                vote_average: data.vote_average, 
+                                release_date: data.release_date,
+                                overview: data.overview 
+                              };
+
+    let encodeFilmData = encodeURIComponent(JSON.stringify(essentialdFilmData))
+    
 
 </script>
 <div class="row" transition:fade>
@@ -23,7 +30,7 @@
           <p>{data.overview}</p>
         </div>
         <div class="card-action">
-          <a href="/reviewsTable/{data.id}/{data.original_title}" class="light-blue-text" replace>Mirar opiniones</a>
+          <a href="/reviewsTable/{data.id}/{data.original_title}/{encodeFilmData}" class="light-blue-text" replace>Mirar opiniones</a>
         </div>
       </div>
     </div>
