@@ -9,6 +9,7 @@
 
     let reviews = []
 
+    export let movie;
     export let filmName;
     export let movieID;
     let cargando = true;
@@ -43,7 +44,7 @@
 
 <main>
 
-    <MainReview filmName={filmName}/>
+    <MainReview filmName={filmName} data={movie}/>
     
     <div class="divider"></div>
 
