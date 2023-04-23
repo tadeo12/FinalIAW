@@ -35,3 +35,7 @@ export const getMovieGPTGeneralReview = (filmName) => {
     return getBychatGPT(filmName+"  critica del publico general en una oración");
 }
 
+export const translateText = (text) => {
+    return getBychatGPT("traduce el siguiente texto al español: "+text);
+}
+
